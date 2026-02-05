@@ -64,6 +64,37 @@ slides[activeIndex].classList.add('is-active');
 }, 6000);
 }
 
+// 2025 highlights carousel
+const gallerySlides = document.querySelectorAll('.carousel-slide');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+const dots = document.querySelectorAll('.carousel-dots .dot');
+let galleryIndex = 0;
+
+const setGallerySlide = (index) => {
+gallerySlides.forEach((slide, i) => {
+slide.classList.toggle('is-active', i === index);
+});
+dots.forEach((dot, i) => {
+dot.classList.toggle('is-active', i === index);
+});
+galleryIndex = index;
+};
+
+if (gallerySlides.length) {
+const showNext = () => setGallerySlide((galleryIndex + 1) % gallerySlides.length);
+const showPrev = () => setGallerySlide((galleryIndex - 1 + gallerySlides.length) % gallerySlides.length);
+
+if (nextBtn) nextBtn.addEventListener('click', showNext);
+if (prevBtn) prevBtn.addEventListener('click', showPrev);
+
+dots.forEach((dot, i) => {
+dot.addEventListener('click', () => setGallerySlide(i));
+});
+
+setInterval(showNext, 5000);
+}
+
 // Countdown timer to program start (Accra, GMT)
 const targetDate = new Date('2026-08-24T09:00:00+00:00');
 const countDaysEl = document.getElementById('countDays');
