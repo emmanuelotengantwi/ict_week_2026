@@ -21,6 +21,36 @@ addToCalendarBtn.classList.remove('is-sliding');
 });
 }
 
+// Theme toggle (dark / light)
+const themeToggle = document.querySelector('.theme-toggle');
+const root = document.documentElement;
+const storedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const setTheme = (mode) => {
+const isDark = mode === 'dark';
+root.classList.toggle('theme-dark', isDark);
+if (themeToggle) {
+themeToggle.setAttribute('aria-pressed', String(isDark));
+themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+};
+
+if (storedTheme) {
+setTheme(storedTheme);
+} else {
+setTheme(prefersDark ? 'dark' : 'light');
+}
+
+if (themeToggle) {
+themeToggle.addEventListener('click', () => {
+const isDark = root.classList.contains('theme-dark');
+const next = isDark ? 'light' : 'dark';
+setTheme(next);
+localStorage.setItem('theme', next);
+});
+}
+
 // Mobile nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
@@ -35,6 +65,14 @@ link.addEventListener('click', () => {
 siteNav.classList.remove('is-open');
 navToggle.setAttribute('aria-expanded', 'false');
 });
+});
+
+document.addEventListener('keydown', (event) => {
+if (event.key === 'Escape' && siteNav.classList.contains('is-open')) {
+siteNav.classList.remove('is-open');
+navToggle.setAttribute('aria-expanded', 'false');
+navToggle.focus();
+}
 });
 }
 
@@ -77,6 +115,8 @@ slide.classList.toggle('is-active', i === index);
 });
 dots.forEach((dot, i) => {
 dot.classList.toggle('is-active', i === index);
+dot.setAttribute('tabindex', i === index ? '0' : '-1');
+dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
 });
 galleryIndex = index;
 };
@@ -90,6 +130,8 @@ if (prevBtn) prevBtn.addEventListener('click', showPrev);
 
 dots.forEach((dot, i) => {
 dot.addEventListener('click', () => setGallerySlide(i));
+dot.setAttribute('role', 'tab');
+dot.setAttribute('tabindex', i === 0 ? '0' : '-1');
 });
 
 setInterval(showNext, 5000);

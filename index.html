@@ -18,7 +18,7 @@
 <img src="assets/images/logo.png" alt="NITA logo" />
 <!-- <span class="logo-text">NITA</span> -->
 </a>
-<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
 <span class="nav-toggle-bar"></span>
 <span class="nav-toggle-bar"></span>
 <span class="nav-toggle-bar"></span>
@@ -33,6 +33,16 @@
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+<svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+<path d="M21 14.5A9 9 0 1 1 9.5 3a7 7 0 1 0 11.5 11.5Z"></path>
+</svg>
+<svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l-1.4-1.4M20.4 20.4 19 19M5 19l-1.4 1.4M20.4 3.6 19 5"></path>
+</svg>
+<span class="sr-only">Toggle dark mode</span>
+</button>
 </div>
 </header>
 
@@ -50,14 +60,14 @@
 <p class="hero-meta">Accra International Conference Centre</p>
 
 <div class="hero-actions">
-<button class="btn btn-primary slide-btn" id="addToCalendar">
+<button class="btn btn-primary slide-btn" id="addToCalendar" aria-label="Add event to Google Calendar">
 <span class="slide-btn-text">Add to Calendar</span>
 <span class="slide-btn-track" aria-hidden="true"></span>
 </button>
 <a href="#programme" class="btn btn-outline">View Programme</a>
 </div>
 <div class="countdown-inline">
-<div class="countdown" role="timer" aria-live="polite">
+<div class="countdown" role="timer" aria-live="polite" aria-atomic="true">
 <div class="time-box">
 <span class="time-value" id="countDays">00</span>
 <span class="time-label">Days</span>
@@ -184,7 +194,7 @@ Each sector will mobilize its stakeholders, including regulators, service provid
 </div>
 <button class="carousel-btn next" type="button" aria-label="Next photo">&#10095;</button>
 </div>
-<div class="carousel-dots" role="tablist" aria-label="Gallery navigation">
+<div class="carousel-dots" role="tablist" aria-label="2025 Highlights gallery navigation">
 <button class="dot is-active" type="button" aria-label="Slide 1"></button>
 <button class="dot" type="button" aria-label="Slide 2"></button>
 <button class="dot" type="button" aria-label="Slide 3"></button>
