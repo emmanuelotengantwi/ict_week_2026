@@ -1083,6 +1083,46 @@ border: 1px solid rgba(15, 23, 42, 0.08);
 box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
 }
 
+.sponsorship-section .btn {
+margin-top: 1.2rem;
+display: inline-block;
+}
+
+.package-mini-grid {
+margin-top: 1.4rem;
+display: grid;
+gap: 0.9rem;
+}
+
+.package-mini {
+display: grid;
+grid-template-columns: auto 1fr;
+gap: 0.8rem;
+align-items: start;
+}
+
+.package-mini i {
+width: 32px;
+height: 32px;
+display: grid;
+place-items: center;
+border-radius: 8px;
+background: rgba(15, 23, 42, 0.06);
+color: var(--primary);
+font-size: 0.95rem;
+}
+
+.package-mini h4 {
+margin: 0 0 0.2rem;
+font-size: 1rem;
+}
+
+.package-mini p {
+margin: 0;
+color: var(--muted);
+font-size: 0.95rem;
+}
+
 .theme-title {
 font-family: 'Space Grotesk', sans-serif;
 font-size: 1.6rem;
