@@ -21,6 +21,42 @@ addToCalendarBtn.classList.remove('is-sliding');
 });
 }
 
+// Conference tabs
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+if (tabButtons.length && tabPanels.length) {
+tabButtons.forEach((btn) => {
+btn.addEventListener('click', () => {
+const target = btn.getAttribute('data-tab');
+tabButtons.forEach((b) => {
+b.classList.toggle('is-active', b === btn);
+b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+});
+tabPanels.forEach((panel) => {
+panel.classList.toggle('is-active', panel.id === target);
+});
+});
+});
+}
+
+// Program day tabs
+const dayButtons = document.querySelectorAll('.day-tab-btn');
+const dayPanels = document.querySelectorAll('.day-panel');
+if (dayButtons.length && dayPanels.length) {
+dayButtons.forEach((btn) => {
+btn.addEventListener('click', () => {
+const target = btn.getAttribute('data-day');
+dayButtons.forEach((b) => {
+b.classList.toggle('is-active', b === btn);
+b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+});
+dayPanels.forEach((panel) => {
+panel.classList.toggle('is-active', panel.id === target);
+});
+});
+});
+}
+
 // Theme toggle (dark / light)
 const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
